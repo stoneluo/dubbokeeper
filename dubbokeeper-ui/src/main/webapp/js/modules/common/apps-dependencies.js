@@ -58,10 +58,23 @@ appDependencies.directive("appDependencies",function(){
             }
             var generateOptions = function(nodes,edges,clickEvent,clickEdge){
                 return  {
-                    layout: {
-                        name: 'cose',
-                        padding: 10
-                    },
+                        layout: {
+                            name: 'circle',
+                            fit: true, // whether to fit the viewport to the graph
+                            padding: 30, // the padding on fit
+                            boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+                            avoidOverlap: true, // prevents node overlap, may overflow boundingBox and radius if not enough space
+                            radius: undefined, // the radius of the circle
+                            startAngle: 3 / 2 * Math.PI, // where nodes start in radians
+                            sweep: undefined, // how many radians should be between the first and last node (defaults to full circle)
+                            clockwise: true, // whether the layout should go clockwise (true) or counterclockwise/anticlockwise (false)
+                            sort: undefined, // a sorting function to order the nodes; e.g. function(a, b){ return a.data('weight') - b.data('weight') }
+                            animate: false, // whether to transition the node positions
+                            animationDuration: 500, // duration of animation in ms if enabled
+                            animationEasing: undefined, // easing of animation if enabled
+                            ready: undefined, // callback on layoutready
+                            stop: undefined // callback on layoutstop
+                        },
 
                     style: cytoscape.stylesheet()
                         .selector('node')
